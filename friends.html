@@ -1,0 +1,136 @@
+{% load socialaccount %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+{% load static %}
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>Classmate</title>
+        <link rel="stylesheet" href="{% static 'dashboard_style.css' %}">
+        <script src="{% static 'onboarding.js' %}"></script>
+        <link rel="stylesheet"
+              href="https://fonts.googleapis.com/css?family=Montserrat:700">
+              <link rel="stylesheet"
+              href="https://fonts.googleapis.com/css?family=Inter:400,500,600">    
+        <link rel="icon"
+              type="image/svg+xml"
+              href="{% static 'images/favicon.svg' %}"/>    
+        <meta name="theme-color" content="#FDFDFD">
+    </head>
+    <body class="d-flex flex-column min-vh-100">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <h1 class="title mt-4">Classmate</h1>
+            </div>
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'dashboard' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'viewStudySessions' %}">Groups</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'viewClasses' %}">Classes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active"
+                       aria-current="page"
+                       href="{% url 'getFriends' %}">Friends</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'getProfile' %}">Profile</a>
+                </li>
+                {% if request.user.is_superuser %}
+                <li class="nav-item">
+                    <a class="nav-link me-auto" href="{% url "admin:index" %}">Admin</a>
+                </li>
+                {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link me-auto" href="{% url 'account_logout' %}">Logout</a>
+                </li>
+            </ul>
+            <div class="container-fluid">
+                <h3 class="title-text mt-3">Add Friends</h3>
+                <div class="main-card p-5">
+                    <div class="row">
+                        <div class=" d-flex align-items-center col">
+                            <div class="row class-pick w-100 mx-0">
+                                <div class="input-group col-sm-2 stretch-search px-0">
+                                    <form method="POST">
+                                        <div class="input-group d-flex">
+                                        <input type="search"
+                                               class="form-control form-control-lg"
+                                               name="friendz"
+                                               placeholder="friend's username">
+                                        <button class="btn btn-friend-search">Search</button>
+                                    </div>
+                                    {% csrf_token %}
+                                </form>
+                            </div>
+                            <div class="col-sm-2 add-btn d-grid"></div>
+                            {% if friends %}
+                                <table id="friends" class="table table-hover" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>Username</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for friend in friends %}
+                                            <form method="POST">
+                                                <tr>
+                                                    <td name="username">{{ friend }}</td>
+                                                    <input type="hidden" name="username" value="{{ friend }}">
+                                                    <td>
+                                                        <a class="btn btn-primary btn-friend-search"
+                                                           href="{% url 'changeFriends' %}?username={{ friend.user.username }}"
+                                                           role="button">Add</a>
+                                                    </td>
+                                                </tr>
+                                            </form>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            {% endif %}
+                            <div class="card p-0 mb-3 mt-4">
+                                <div class="card-header">My Friends</div>
+                                {% if found %}
+                                    {% for f in found %}
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">{{f}}</li>
+                                        </ul>
+                                    {% endfor %}
+                                {% else %}
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">No friends found...</li>
+                                    </ul>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+
+        <section class="mt-auto">
+            <!-- Footer -->
+            <footer class="text-center text-white" style="background-color: rgb(97, 129, 247);">
+              <!-- Grid container -->
+              <div class="text-center p-3" style="background-color: rgb(97, 129, 247);">
+                Classmate © 2022 Copyright:
+                <a class="text-white" href="https://github.com/uva-cs3240-f22/project-b-1">Group B-1</a>
+              </div>
+            </footer>
+            <!-- Footer -->
+          </section>
+            
+        
+        
+    </html>
+</html>

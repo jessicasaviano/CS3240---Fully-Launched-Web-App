@@ -1,0 +1,97 @@
+{% load socialaccount %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+{% load static %}
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>Onboarding</title>
+        <link rel="stylesheet" href="{% static 'onboarding_style.css' %}">
+        <script src="{% static 'onboarding.js' %}"></script>
+        <link rel="stylesheet"
+              href="https://fonts.googleapis.com/css?family=Montserrat:700">
+        <link rel="stylesheet"
+              href="https://fonts.googleapis.com/css?family=Inter:700">
+              <link rel="stylesheet"
+              href="https://fonts.googleapis.com/css?family=Inter:400">
+        <link rel="icon"
+              type="image/svg+xml"
+              href="{% static 'images/favicon.svg' %}"/>
+        <!-- web browser navigation bar color <meta name="theme-color" content="#FAEAF2"> -->
+    </head>
+    <body>
+        <div class="container">
+            <div class="row justify-content-center">
+                <h1 class="title mt-5">Classmate</h1>
+            </div>
+        </div>
+        <div class="row align-items-center vh-75 vw-100">
+            <div class="col-8 mx-auto">
+                <div class="main-card p-5">
+                    <div class="card-body d-flex flex-column">
+                        <a href="{% url 'setClasses' %}" class="btn btn-onboarding btn-icon mb-3"> <img class="btn-img" src="{% static 'images/arrow-back-outline.svg' %}">Back</a>
+                        <h1 class="title-text">Let's get to know your study habits.</h1>
+                            <div class="input-group d-flex">
+                                <form method="POST" action="{% url 'changePreferences' %}">
+                                    {% csrf_token %}
+                                <div class="form-group">
+                                    <label class="mt-3">What is your preferred study location?</label>
+                                    <select class="form-select rounded" name="favorite_location" id="q1Choice">
+                                        <option value="AtaLibrary">
+                                            At a Library
+                                        </option>
+                                        <option value="AtHome">
+                                            At Home
+                                        </option>
+                                    </select>
+                                    <label class="mt-3">Do you prefer meeting in person or online?</label>
+                                    <div class="form-check">
+                                        <input class="form-check-input"
+                                               type="radio"
+                                               name="in_person"
+                                               id="q2ChoiceTrue"
+                                               value="True"
+                                               checked>
+                                        <label class="form-check-label" for="q2ChoiceTrue">In Person</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input"
+                                               type="radio"
+                                               name="in_person"
+                                               id="q2ChoiceFalse"
+                                               value="False">
+                                        <label class="form-check-label" for="q2ChoiceFalse">Online</label>
+                                    </div>
+                                    <label class="mt-3">Do you prefer to cram or study ahead of time?</label>
+                                    <div class="form-check">
+                                        <input class="form-check-input"
+                                               type="radio"
+                                               name="cramming"
+                                               id="q3ChoiceTrue"
+                                               value="True"
+                                               checked>
+                                        <label class="form-check-label" for="q3ChoiceTrue">Need a last minute study buddy!</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input"
+                                               type="radio"
+                                               name="cramming"
+                                               id="q3ChoiceFalse"
+                                               value="False">
+                                        <label class="form-check-label" for="q3ChoiceFalse">Let's review for my midterm next month!</label>
+                                    </div>
+                                    <div class="d-grid">
+                                    <button class="btn btn-onboarding btn-block mt-3">Continue</button>
+                                    </div>
+                                </form>
+                        </div>
+                    <div class="col d-flex align-items-center justify-content-center"> <img class="onboarding-img-2" src="{% static 'images/onboarding_study.svg' %}"> </div>
+
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

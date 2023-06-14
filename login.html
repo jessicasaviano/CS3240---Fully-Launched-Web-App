@@ -1,0 +1,48 @@
+{% extends "socialaccount/base.html" %}
+{% load i18n %}
+{% load static %}
+{% block head_title %}
+  {% trans "Sign in to Classmate" %}
+{% endblock %}
+{% block content %}
+  <div class="d-md-flex h-md-100 align-items-center">
+    <div class="col-md-6 p-0 bg-left h-md-100 ">
+      <div class="d-md-flex h-100 p-5 justify-content-center">
+        <div class="logoarea pt-5 pb-5 d-flex flex-column">
+          <a href="{% url 'index' %}">
+            <h1 class="mx-5 mt-4 logo-text">Classmate</h1>
+          </a>
+          <h5 class="mx-5 mt-5 tagline">Join Classmate today!</h5>
+          <p class="mx-5 detail">Log in to access your account and start finding peers to study with.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 p-0 bg-white h-md-100 loginarea">
+      <div class="d-md-flex align-items-center h-md-100 p-5 justify-content-center">
+        <div class="align-items-center login-align">
+          <h3 class="login-heading mb-4 emoji">👋</h3>
+          <h3 class="login-heading mb-4">Nice to see you!</h3>
+            {% if user.is_authenticated %}
+              <div class="d-grid gap-2 d-md-block">
+                <p>Hi, {{ user.username|title }}! You're logged in.</p>
+                <a href="{% url 'dashboard' %}"
+                <button class="btn btn-continue"> Continue </button>
+                </a>
+                <a href="{% url 'account_logout' %}">
+                  <button type="button" class="btn btn-secondary btn-sign-out">Sign Out</button>
+                </a>
+              </div>
+            {% else %}
+              <p class="login-body">Sign in with Google to get started.</p>
+              <form method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-login">
+                  <img src="{% static 'images/Google-Login-Icon.svg' %}" width="20" />
+                  {% trans "Sign in with Google" %}
+                </button>
+              </form>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+{% endblock %}

@@ -1,0 +1,195 @@
+.title {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    align-items: center;
+    text-align: center;
+    color: #052943;
+}
+
+.circle {
+    display: inline-block;
+    background-color: #6181F7;
+    margin: 10px;
+    border-radius: 50%;
+}
+
+.circle-inner {
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    text-decoration: none;
+    height: 90px;
+    width: 90px;
+    font-size: 30px;
+    user-select: none;
+}
+
+.circle-small {
+    display: inline-block;
+    background-color: #6181F7;
+    margin: 2px;
+    border-radius: 50%;
+}
+
+.circle-inner-small {
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    text-decoration: none;
+    height: 50px;
+    width: 50px;
+    font-size: 20px;
+    user-select: none;
+}
+
+.card-lay {
+
+    display: inline-flex;
+    flex-direction: row;
+    align-content: stretch;
+    justify-content: space-evenly;
+    align-items: center;
+
+}
+
+.btn-profile {
+    background: #6181F7;
+    border-radius: 50px;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    text-align: center;
+    letter-spacing: 0.5px;
+    color: #FFFFFF;
+    pointer-events: none;
+    box-sizing: border-box;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.card-name {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    color: #212529;
+}
+
+.fill-pg {
+    min-width: 100vw !important;
+    margin: 0 !important;
+}
+
+.btn-friend-search {
+    background: #6181F7;
+    border-radius: 5px;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    letter-spacing: 0.5px;
+    display: inline-block;
+    color: #FFFFFF;
+}
+
+.btn-friend-search:focus {
+    box-shadow: 0 0 0 0.25rem rgba(97, 129, 247, 0.5);
+}
+
+.btn-friend-search:hover {
+    background: #536ed4;
+    color: #FFFFFF;
+}
+
+.btn-study-session {
+    background: #6181F7;
+    border-radius: 5px;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    text-align: center;
+    display: inline-block;
+    color: #FFFFFF;
+}
+
+.btn-study-session:focus {
+    box-shadow: 0 0 0 0.25rem rgba(84, 119, 244, 0.5);
+}
+
+.btn-study-session:hover {
+    background: #536ed4;
+    color: #FFFFFF;
+}
+
+.class-card {
+    transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12);
+    cursor: pointer;
+}
+
+.class-card:hover {
+    transform: scale(1.01);
+    border-color: rgba(97, 129, 247, 0.5);
+    /* box-shadow: 0 10px 20px rgba(0, 0, 0, .05), 0 4px 8px rgba(0, 0, 0, .06); */
+}
+
+.link-ani:hover {
+    color: #536ed4;
+}
+
+.card-title {
+    font-family: 'Inter', sans-serif;
+}
+
+.card-text {
+    font-family: 'Inter', sans-serif;
+}
+
+.c-subtitle {
+    color: #6C757D;
+}
+
+.title-text {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+}
+
+body {
+    background-color: #FDFDFD;
+}
+
+p {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+
+}
+
+a {
+    font-family: 'Inter', sans-serif;
+    text-decoration-line: none;
+    color: #0B3AE5;
+    /* accessible color */
+}
+
+.nav-link {
+    font-family: 'Inter', sans-serif;
+    color: #0B3AE5 !important;
+    /* accessible color */
+
+}
+
+.active {
+    color: #495057 !important;
+}

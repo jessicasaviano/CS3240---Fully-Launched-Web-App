@@ -1,0 +1,139 @@
+.title {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    align-items: center;
+    text-align: center;
+    color: #052943;
+}
+
+body {
+    background: url("images/mesh-gradient.png") no-repeat center center fixed;
+    background-size: cover;
+}
+
+.main-card {
+    background-color: white;
+    border-radius: 32px;
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid #FFFFFF;
+    box-sizing: border-box;
+}
+
+.title-text {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    /* or 184% */
+    color: #052943;
+}
+
+.title-sub {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    color: #052943;
+}
+
+.class-pick {
+    flex: none !important;
+    order: 1 !important;
+    flex-grow: 0 !important;
+}
+
+.btn-onboarding {
+    background: #6181F7;
+    border-radius: 5px;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    letter-spacing: 0.5px;
+    display: inline-block;
+    color: #FFFFFF;
+}
+
+.btn-onboarding:focus {
+    box-shadow: 0 0 0 0.25rem rgba(97, 129, 247, 0.5);
+}
+
+.btn-onboarding:hover {
+    background: #536ed4;
+    color: #FFFFFF;
+}
+
+.btn-icon {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 9px 12px;
+    gap: 6px;
+    border-radius: 4px;
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    width: 84px;
+    height: 38px;
+}
+
+.btn-img {
+    fill: white;
+    width: 14px;
+    height: 14px;
+}
+
+.input-label {
+    color: #343A40;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    padding-left: 0px;
+    padding-right: 0px;
+    font-size: 16px;
+    align-self: center;
+}
+
+.add-btn {
+    padding-left: 0px;
+    padding-right: 0px;
+    align-self: center;
+}
+
+.stretch-search {
+    display: block !important;
+
+}
+
+.onboarding-img {
+    min-width: 400px;
+    max-width: 400px;
+}
+
+.onboarding-img-2 {
+    width: 300px;
+}
+
+.form-check-input:checked {
+    background-color: #6181F7 !important;
+    border-color: #536ed4 !important;
+}
+.form-control:focus {
+    border-color: #7994f6;
+    box-shadow: 0 0 0 0.25rem rgb(97 129 247 / 25%);
+}
+.form-select:focus {
+    border-color: #7994f6;
+    box-shadow: 0 0 0 0.25rem rgb(97 129 247 / 25%);
+}
+label {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+}

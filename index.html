@@ -1,0 +1,70 @@
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>Home page</title>
+    </head>
+    <body>
+        <section class="landing-hero">
+            <nav class="navbar sticky-top navbar-expand-lg navbar-landing">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">Classmate</li>
+                </ul>
+                <button class="btn btn-outline-landing my-2 my-sm-0 px-3">Get Started</button>
+            </nav>
+            <h1>Get the help you need.</h1>
+            <h2>Find the right group study sessions for you</h2>
+            <button type="button" class="btn btn-dark btn-landing">Get Started</button>
+        </section>
+    </body>
+    <style>
+        .navbar-landing {
+            backdrop-filter: blur(20px);
+        }
+        
+        .nav-item {
+            font-family: 'Montserrat', sans-serif;
+            color: #052943;
+            font-weight: bold;
+            font-size: 2.85em;
+        }
+        
+        .btn-outline-landing {
+            font-family: 'Helvetica-Neue', sans-serif;
+            color: #052943;
+            border-color: #052943;
+            font-size: 1.2em;
+        }
+        
+        .btn-outline-landing:hover,
+        .btn-outline-landing:focus,
+        .btn-outline-landing:active,
+        .btn-outline-landing.active {
+            font-family: 'Helvetica-Neue', sans-serif;
+            color: white;
+            background-color: #052943;
+        }
+        
+        .btn-landing {
+            color: white;
+            background-color: #052943;
+        }
+        
+        .btn-landing:hover,
+        .btn-landing:focus,
+        .btn-landing:active,
+        .btn-landing.active {
+            color: white;
+            background-color: #052943;
+        }
+        
+        /*.landing-hero {
+            background: url("mesh-gradient.png");
+        }*/
+    </style>
+</html>

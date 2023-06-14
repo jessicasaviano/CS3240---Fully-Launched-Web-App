@@ -1,0 +1,83 @@
+{% load socialaccount %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+{% load static %}
+<!-- ToDo: add footer and finishing touches (see style doc for more info)-->
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>Classmate</title>
+        <link rel="stylesheet" href="{% static 'style.css' %}">
+        <link rel="stylesheet"
+              href="https://fonts.googleapis.com/css?family=Montserrat:700">
+        <link rel="icon" type="image/svg+xml" href="{% static 'images/favicon.svg' %}" />
+        <!-- web browser navigation bar color <meta name="theme-color" content="#FAEAF2"> -->
+    </head>
+    <body>
+        <section class="landing-hero mb-5">
+            <nav class="navbar navbar-expand-lg navbar-landing mb-5 mx-5">
+                <ul class="navbar-nav mx-auto nav-mar">
+                    <li class="nav-item">Classmate</li>
+                    <!-- TODO: make it properly centered -->
+                </ul>
+                <div class="nav-mar">
+                    <a href="{% provider_login_url 'google' %}"
+                       aria-label="Get started with Classmate">
+                        <button class="btn btn-outline-landing my-2 my-sm-0 px-3">Get Started</button>
+                    </a>
+                </div>
+            </nav>
+            <div class="container container-hero mt-5">
+                <div class="row">
+                    <div class="col ml-5 lg">
+                        <h1 class="hero-text mb-4">Get the help you need.</h1>
+                        <h2 class="hero-subtext mb-4">Find the right group study sessions for you</h2>
+                        <a href="{% provider_login_url 'google' %}"
+                           aria-label="Get started with Classmate">
+                            <button type="button" class="btn btn-lg btn-landing">Get Started</button>
+                        </a>
+                    </div>
+                    <div class="col-xl">
+                        <img src="{% static 'images/hero-image.png' %}" class="img-fluid mb-5">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="mb-5">
+            <h2 class="text-center mt-5 hero-subtext">Classmate is here to help you study</h2>
+            <div class="container px-4">
+                <div class="row gx-5 gy-5">
+                    <div class="col">
+                        <div class="p-3 feature-card">
+                            <img src="{% static 'images/people-class-image.svg' %}"
+                                 class="feature-img">
+                            Find people in your classes
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="p-3 feature-card">
+                            <img src="{% static 'images/study-sessions-image.svg' %}"
+                                 class="feature-img">
+                            Schedule study sessions
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="p-3 feature-card">
+                            <img src="{% static 'images/group-chat-image.svg' %}" class="feature-img">
+                            Create group chats
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- for testing -->
+            {% comment %} {% if user.is_authenticated %}
+                <p>Welcome, {{ user.username }}!</p>
+            {% else %}
+                <p>Not logged in.</p>
+            {% endif %} {% endcomment %}
+        </section>
+    </body>
+</html>

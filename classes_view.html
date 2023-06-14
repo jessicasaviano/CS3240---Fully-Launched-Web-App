@@ -1,0 +1,144 @@
+{% load socialaccount %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+{% load static %}
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>Classmate</title>
+        <link rel="stylesheet" href="{% static 'dashboard_style.css' %}">
+        <script src="{% static 'onboarding.js' %}"></script>
+        <link rel="stylesheet"
+              href="https://fonts.googleapis.com/css?family=Montserrat:700">
+        <link rel="stylesheet"
+              href="https://fonts.googleapis.com/css?family=Inter:400,500,600">
+        <meta name="theme-color" content="#FDFDFD">
+        <link rel="icon"
+              type="image/svg+xml"
+              href="{% static 'images/favicon.svg' %}"/>
+    </head>
+    <body class="d-flex flex-column min-vh-100">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <h1 class="title mt-4">Classmate</h1>
+            </div>
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'dashboard' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'viewStudySessions' %}">Groups</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="{% url 'viewClasses' %}">Classes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'getFriends' %}">Friends</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'getProfile' %}">Profile</a>
+                </li>
+                {% if request.user.is_superuser %}
+                    <li class="nav-item">
+                        <a class="nav-link me-auto" href="{% url "admin:index" %}">Admin</a>
+                    </li>
+                {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link me-auto" href="{% url 'account_logout' %}">Logout</a>
+                </li>
+            </ul>
+            <div class="col">
+                <div class='container-fluid'>
+                    <h3 class="title-text mt-3">All Classes</h3>
+                    {% if classes %}
+                        <div class='row'>
+                            {% for class in classes %}
+                                {% if forloop.counter0|divisibleby:3 %}
+                                </div>
+                                <br>
+                                <div class="row">
+                                {% endif %}
+                                <div class="col-4">
+                                    <div class="card class-card" style="">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ class.class_name }}</h5>
+                                            <h6 class="card-title fw-semibold">{{ class.description }} with {{ class.instructor }}</h6>
+                                            <h6 class="card-title fw-normal">
+                                                {{ class.days }} at {{ class.start_time }} ({{ class.component }})
+                                            </h5>
+                                            <a class="card-link stretched-link"
+                                               data-bs-toggle="modal"
+                                               data-bs-target="#classModal{{ class.id }}">Class Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal fade"
+                                     id="classModal{{ class.id }}"
+                                     tabindex="-1"
+                                     aria-labelledby="classModalLabel"
+                                     aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="classModal">{{ class.class_name }}</h1>
+                                                <button type="button"
+                                                        class="btn-close"
+                                                        data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <h6 class="card-title fw-semibold">{{ class.description }} with {{ class.instructor }}</h6>
+                                                <h6 class="card-text fw-normal">Meets {{ class.days }} from {{ class.start_time }} to {{ class.end_time }}</h6>
+                                                <h6 class="card-text fw-normal">Location: {{ class.location }}</h6>
+                                                <h6 class="card-text fw-normal">
+                                                    Type:
+                                                    {% if class.component == "LEC" %}
+                                                        Lecture
+                                                    {% elif class.component == "LAB" %}
+                                                        Lab
+                                                    {% elif class.component == "DIS" %}
+                                                        Discussion
+                                                    {% else %}
+                                                        {{ class.component }}
+                                                    {% endif %}
+                                                </h6>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <a href="{% url 'createStudySession' class.id %}"
+                                                   class="btn btn-primary btn-study-session">Create a Study Session!</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">No classes found...</li>
+                            </ul>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<section class="mt-auto">
+    <!-- Footer -->
+    <footer class="text-center text-white"
+            style="background-color: rgb(97, 129, 247);">
+        <!-- Grid container -->
+        <div class="text-center p-3" style="background-color: rgb(97, 129, 247);">
+            Classmate © 2022 Copyright:
+            <a class="text-white"
+               href="https://github.com/uva-cs3240-f22/project-b-1">Group B-1</a>
+        </div>
+    </footer>
+    <!-- Footer -->
+</section>
+</html>
+</html>

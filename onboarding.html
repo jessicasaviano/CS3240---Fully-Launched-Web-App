@@ -1,0 +1,332 @@
+{% load socialaccount %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+{% load static %}
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>Onboarding</title>
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.css"/>
+        <link rel="stylesheet" href="{% static 'onboarding_style.css' %}">
+        <script src="{% static 'onboarding.js' %}"></script>
+        <link rel="stylesheet"
+              href="https://fonts.googleapis.com/css?family=Montserrat:700">
+        <link rel="stylesheet"
+              href="https://fonts.googleapis.com/css?family=Inter:700">
+        <link rel="stylesheet"
+              href="https://fonts.googleapis.com/css?family=Inter:500">
+        <link rel="icon"
+              type="image/svg+xml"
+              href="{% static 'images/favicon.svg' %}"/>
+
+        <!-- web browser navigation bar color <meta name="theme-color" content="#FAEAF2"> -->
+    </head>
+    <body>
+        <div class="container">
+            <div class="row justify-content-center">
+                <h1 class="title mt-5">Classmate</h1>
+            </div>
+        </div>
+        <div class="row align-items-center vh-100 vw-100">
+            <div class="col-8 mx-auto">
+                <div class="main-card p-5">
+                    <a href="{% url 'index' %}" class="btn btn-onboarding btn-icon mb-3"> <img class="btn-img" src="{%static 'images/arrow-back-outline.svg'%}"   >Back</a>
+                    <p class="title-text mb-0">Nice to meet you, {{ user.username|title }}!</p>
+                    <p class="title-sub"> Let’s get your classes loaded into Classmate. </p> 
+                    <div class="row">
+                    <div class=" d-flex align-items-center col">
+                        <div class="row class-pick w-100 mx-0">
+                                <div class="input-group col-sm-2 stretch-search px-0">
+                                    <form method="POST" class="mb-0">
+                                        <div class="input-group d-flex mb-2">
+                                            <select class="form-select" name="dept" id="deptChoice">
+                                                <option selected value="">Select Department</option>
+                                                <option value="ACCT">ACCT</option>
+                                                <option value="AIRS">AIRS</option>
+                                                <option value="ALAR">ALAR</option>
+                                                <option value="AM">AM</option>
+                                                <option value="AMST">AMST</option>
+                                                <option value="ANTH">ANTH</option>
+                                                <option value="APMA">APMA</option>
+                                                <option value="ARAB">ARAB</option>
+                                                <option value="ARAD">ARAD</option>
+                                                <option value="ARAH">ARAH</option>
+                                                <option value="ARCH">ARCH</option>
+                                                <option value="ARCY">ARCY</option>
+                                                <option value="ARH">ARH</option>
+                                                <option value="ARTH">ARTH</option>
+                                                <option value="ARTR">ARTR</option>
+                                                <option value="ARTS">ARTS</option>
+                                                <option value="ASL">ASL</option>
+                                                <option value="ASTR">ASTR</option>
+                                                <option value="BIMS">BIMS</option>
+                                                <option value="BIOC">BIOC</option>
+                                                <option value="BIOL">BIOL</option>
+                                                <option value="BIOP">BIOP</option>
+                                                <option value="BME">BME</option>
+                                                <option value="BUS">BUS</option>
+                                                <option value="CASS">CASS</option>
+                                                <option value="CE">CE</option>
+                                                <option value="CELL">CELL</option>
+                                                <option value="CHE">CHE</option>
+                                                <option value="CHEM">CHEM</option>
+                                                <option value="CHIN">CHIN</option>
+                                                <option value="CHTR">CHTR</option>
+                                                <option value="CLAS">CLAS</option>
+                                                <option value="COGS">COGS</option>
+                                                <option value="COLA">COLA</option>
+                                                <option value="COMM">COMM</option>
+                                                <option value="CONC">CONC</option>
+                                                <option value="CPE">CPE</option>
+                                                <option value="CREO">CREO</option>
+                                                <option value="CS">CS</option>
+                                                <option value="DANC">DANC</option>
+                                                <option value="DEM">DEM</option>
+                                                <option value="DH">DH</option>
+                                                <option value="DRAM">DRAM</option>
+                                                <option value="DS">DS</option>
+                                                <option value="EALC">EALC</option>
+                                                <option value="EAST">EAST</option>
+                                                <option value="ECE">ECE</option>
+                                                <option value="ECON">ECON</option>
+                                                <option value="EDHS">EDHS</option>
+                                                <option value="EDIS">EDIS</option>
+                                                <option value="EDLF">EDLF</option>
+                                                <option value="EDNC">EDNC</option>
+                                                <option value="EGMT">EGMT</option>
+                                                <option value="ELA">ELA</option>
+                                                <option value="ENCW">ENCW</option>
+                                                <option value="ENGL">ENGL</option>
+                                                <option value="ENGR">ENGR</option>
+                                                <option value="ENTP">ENTP</option>
+                                                <option value="ENWR">ENWR</option>
+                                                <option value="ESL">ESL</option>
+                                                <option value="ETP">ETP</option>
+                                                <option value="EURS">EURS</option>
+                                                <option value="EVAT">EVAT</option>
+                                                <option value="EVEC">EVEC</option>
+                                                <option value="EVGE">EVGE</option>
+                                                <option value="EVHY">EVHY</option>
+                                                <option value="EVSC">EVSC</option>
+                                                <option value="FREN">FREN</option>
+                                                <option value="GBAC">GBAC</option>
+                                                <option value="GBUS">GBUS</option>
+                                                <option value="GCCS">GCCS</option>
+                                                <option value="GCNL">GCNL</option>
+                                                <option value="GCOM">GCOM</option>
+                                                <option value="GDS">GDS</option>
+                                                <option value="GERM">GERM</option>
+                                                <option value="GETR">GETR</option>
+                                                <option value="GHSS">GHSS</option>
+                                                <option value="GNUR">GNUR</option>
+                                                <option value="GREE">GREE</option>
+                                                <option value="GSAS">GSAS</option>
+                                                <option value="GSCI">GSCI</option>
+                                                <option value="GSGS">GSGS</option>
+                                                <option value="GSMS">GSMS</option>
+                                                <option value="GSSJ">GSSJ</option>
+                                                <option value="GSVS">GSVS</option>
+                                                <option value="HBIO">HBIO</option>
+                                                <option value="HEBR">HEBR</option>
+                                                <option value="HHE">HHE</option>
+                                                <option value="HIAF">HIAF</option>
+                                                <option value="HIEA">HIEA</option>
+                                                <option value="HIEU">HIEU</option>
+                                                <option value="HILA">HILA</option>
+                                                <option value="HIME">HIME</option>
+                                                <option value="HIND">HIND</option>
+                                                <option value="HISA">HISA</option>
+                                                <option value="HIST">HIST</option>
+                                                <option value="HIUS">HIUS</option>
+                                                <option value="HR">HR</option>
+                                                <option value="HSCI">HSCI</option>
+                                                <option value="IMP">IMP</option>
+                                                <option value="INST">INST</option>
+                                                <option value="ISBU">ISBU</option>
+                                                <option value="ISHU">ISHU</option>
+                                                <option value="ISIN">ISIN</option>
+                                                <option value="ISLS">ISLS</option>
+                                                <option value="ISSS">ISSS</option>
+                                                <option value="IT">IT</option>
+                                                <option value="ITAL">ITAL</option>
+                                                <option value="ITTR">ITTR</option>
+                                                <option value="JAPN">JAPN</option>
+                                                <option value="JPTR">JPTR</option>
+                                                <option value="KICH">KICH</option>
+                                                <option value="KINE">KINE</option>
+                                                <option value="KLPA">KLPA</option>
+                                                <option value="KOR">KOR</option>
+                                                <option value="LAR">LAR</option>
+                                                <option value="LASE">LASE</option>
+                                                <option value="LAST">LAST</option>
+                                                <option value="LATI">LATI</option>
+                                                <option value="LAW">LAW</option>
+                                                <option value="LING">LING</option>
+                                                <option value="LNGS">LNGS</option>
+                                                <option value="LPPA">LPPA</option>
+                                                <option value="LPPL">LPPL</option>
+                                                <option value="LPPP">LPPP</option>
+                                                <option value="LPPS">LPPS</option>
+                                                <option value="MAE">MAE</option>
+                                                <option value="MATH">MATH</option>
+                                                <option value="MDST">MDST</option>
+                                                <option value="MED">MED</option>
+                                                <option value="MESA">MESA</option>
+                                                <option value="MICR">MICR</option>
+                                                <option value="MISC">MISC</option>
+                                                <option value="MSE">MSE</option>
+                                                <option value="MSP">MSP</option>
+                                                <option value="MUBD">MUBD</option>
+                                                <option value="MUEN">MUEN</option>
+                                                <option value="MUPF">MUPF</option>
+                                                <option value="MUSI">MUSI</option>
+                                                <option value="NASC">NASC</option>
+                                                <option value="NCPR">NCPR</option>
+                                                <option value="NESC">NESC</option>
+                                                <option value="NUCO">NUCO</option>
+                                                <option value="NUIP">NUIP</option>
+                                                <option value="NURS">NURS</option>
+                                                <option value="PATH">PATH</option>
+                                                <option value="PC">PC</option>
+                                                <option value="PERS">PERS</option>
+                                                <option value="PETR">PETR</option>
+                                                <option value="PHAR">PHAR</option>
+                                                <option value="PHIL">PHIL</option>
+                                                <option value="PHS">PHS</option>
+                                                <option value="PHY">PHY</option>
+                                                <option value="PHYS">PHYS</option>
+                                                <option value="PLAC">PLAC</option>
+                                                <option value="PLAD">PLAD</option>
+                                                <option value="PLAN">PLAN</option>
+                                                <option value="PLAP">PLAP</option>
+                                                <option value="PLCP">PLCP</option>
+                                                <option value="PLIR">PLIR</option>
+                                                <option value="PLPT">PLPT</option>
+                                                <option value="POL">POL</option>
+                                                <option value="PORT">PORT</option>
+                                                <option value="POTR">POTR</option>
+                                                <option value="PPL">PPL</option>
+                                                <option value="PSHM">PSHM</option>
+                                                <option value="PSLP">PSLP</option>
+                                                <option value="PSPA">PSPA</option>
+                                                <option value="PSPM">PSPM</option>
+                                                <option value="PSPS">PSPS</option>
+                                                <option value="PST">PST</option>
+                                                <option value="PSYC">PSYC</option>
+                                                <option value="RELA">RELA</option>
+                                                <option value="RELB">RELB</option>
+                                                <option value="RELC">RELC</option>
+                                                <option value="RELG">RELG</option>
+                                                <option value="RELH">RELH</option>
+                                                <option value="RELI">RELI</option>
+                                                <option value="RELJ">RELJ</option>
+                                                <option value="RELS">RELS</option>
+                                                <option value="RUSS">RUSS</option>
+                                                <option value="RUTR">RUTR</option>
+                                                <option value="SANS">SANS</option>
+                                                <option value="SARC">SARC</option>
+                                                <option value="SAST">SAST</option>
+                                                <option value="SATR">SATR</option>
+                                                <option value="SEC">SEC</option>
+                                                <option value="SLAV">SLAV</option>
+                                                <option value="SLTR">SLTR</option>
+                                                <option value="SOC">SOC</option>
+                                                <option value="SPAN">SPAN</option>
+                                                <option value="STAT">STAT</option>
+                                                <option value="STS">STS</option>
+                                                <option value="SWAH">SWAH</option>
+                                                <option value="SYS">SYS</option>
+                                                <option value="TURK">TURK</option>
+                                                <option value="UD">UD</option>
+                                                <option value="UNST">UNST</option>
+                                                <option value="URDU">URDU</option>
+                                                <option value="USEM">USEM</option>
+                                                <option value="WGS">WGS</option>
+                                            </select>
+                                            <input type="search" class="form-control form-control-lg" name="classNum" placeholder="Course Number">
+                                            <button class="btn btn-onboarding btn-block">Search</button>
+                                        </div>
+                                        <small id="classHelpBlock" class="form-text text-muted mt-5">
+                                            Select the class department and type the class number in the box to the right to search for a class.
+                                        </small>
+                                    {% csrf_token %}
+                                </form>
+                            </div>
+
+                            <div class="col-sm-2 add-btn d-grid">
+
+                            </div>
+                            {% if classes %}
+                            <table id="classes" class="table table-hover" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>Instructor</th>
+                                        <th>Description</th>
+                                        <th>Days</th>
+                                        <th>Start Time</th>
+                                        <th>End Time</th>
+                                        <th>Location</th>
+                                        <th>Component</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for class in classes %}
+                                    <form method="POST">
+                                    <tr>
+
+                                            <td>{{class.0}}</td>
+                                            <td name="desc">{{class.1}}</td>
+                                            <td name="days">{{class.2}}</td>
+                                            <td name="start_time">{{class.3}}</td>
+                                            <td name="end_time">{{class.4}}</td>
+                                            <td name="loc">{{class.5}}</td>
+                                            <td name="component">{{class.6}}</td>
+                                            <input type="hidden" name="prof" value="{{class.0}}">
+                                            <input type="hidden" name="desc" value="{{class.1}}">
+                                            <input type="hidden" name="days" value="{{class.2}}">
+                                            <input type="hidden" name="start_time" value="{{class.3}}">
+                                            <input type="hidden" name="end_time" value="{{class.4}}">
+                                            <input type="hidden" name="loc" value="{{class.5}}">
+                                            <input type="hidden" name="component" value="{{class.6}}">
+                                            <td><a class="btn btn-primary btn-onboarding" href="{% url 'addClass' %}?department={{department}}&catalogNum={{catalog_number}}&instr={{class.0|urlencode}}&desc={{class.1|urlencode}}&days={{class.2|urlencode}}&start={{class.3|urlencode}}&end={{class.4|urlencode}}&loc={{class.5|urlencode}}&comp={{class.6|urlencode}}" role="button">Add</a></td>
+
+                                    </tr>
+                                </form>
+                                    {%endfor%}
+                                </tbody>
+                                </table>
+                            {%endif%}
+                            <div class="card p-0 mb-3 mt-4">
+                                <div class="card-header">My Classes</div>
+                                {% if enrolledclasses %}
+                                {% for class in enrolledclasses%}
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">{{class}}</li>
+                                </ul>
+                                {%endfor%}
+                                {% else %}
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">No classes found...</li>
+                                </ul>
+                                {% endif %}
+                            </div>
+
+                            <a href="{% url 'setPreferences' %}" class="btn btn-onboarding">Continue</a>
+                        </div>
+                    </div>
+                    <div class="col d-flex align-items-center justify-content-center"> <img class="onboarding-img" src="{% static 'images/onboarding-pana.svg' %}"> </div>
+                    </div>
+                </div>
+            </div>
+            {% comment %} <a href="{% url 'account_logout' %}">
+                <button type="button" class="btn btn-secondary btn-sign-out">Sign Out</button>
+            </a> {% endcomment %}
+        </body>
+    </html>

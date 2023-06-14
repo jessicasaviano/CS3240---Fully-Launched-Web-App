@@ -1,0 +1,133 @@
+{% load socialaccount %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+{% load static %}
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>Classmate</title>
+        <link rel="stylesheet" href="{% static 'dashboard_style.css' %}">
+        <script src="{% static 'onboarding.js' %}"></script>
+        <link rel="stylesheet"
+              href="https://fonts.googleapis.com/css?family=Montserrat:700">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
+        <meta name="theme-color" content="#FDFDFD">
+    </head>
+    <body class="d-flex flex-column min-vh-100">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <h1 class="title mt-4">Classmate</h1>
+            </div>
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'dashboard' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="{% url 'viewStudySessions' %}">Groups</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'viewClasses' %}">Classes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="{% url 'getFriends' %}">Friends</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="{% url 'getProfile' %}">Profile</a>
+                </li>
+                {% if request.user.is_superuser %}
+                <li class="nav-item">
+                    <a class="nav-link me-auto" href="{% url "admin:index" %}">Admin</a>
+                </li>
+                {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link me-auto" href="{% url 'account_logout' %}">Logout</a>
+                </li>
+            </ul>
+
+            <div class="container">
+                <div class="mt-4">
+                    <div class="card" style="">
+                        <div class="card-body">
+                            <h4 class="card-title">{{foundSession.title}}</h4>
+                            <h6 class="card-text">Description: {{foundSession.description}}</h6>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Led by: {{foundSession.organizer}}</li>
+                            <li class="list-group-item">For: {{foundSession.associatedClass.class_name}} with {{foundSession.associatedClass.instructor}}</li>
+                            <li class="list-group-item">Location: {{foundSession.location}}</li>
+                            <li class="list-group-item">Starts at: {{foundSession.startTime}}</li>
+                            <li class="list-group-item">Ends at: {{foundSession.endTime}}</li>
+                        </ul>
+                        <div class="card-body">
+                            <h6 class="card-text">Attendees:</h6>
+                            <ul>
+                                {% for attendee in foundSession.attendees.all%}
+                                <li>{{attendee}}</li>
+                                {%endfor%}
+                            </ul>
+                        </div>
+
+
+
+                        <a href="{% url 'joinStudySession' foundSession.id %}" class="btn btn-primary">Join Session!</a>
+
+                    <a href="{% url 'leaveStudySession' foundSession.id %}" class="btn btn-primary">Leave Session</a>
+
+                            </div>
+                           <div>
+                              <form method="POST" action="{% url 'getDis' foundSession.id %}">
+                                <p class="h3">Send a message</p>
+                                <input type="text" class="form-control form-control-lg" name="message" placeholder="Message">
+                                  <p class="h3">date</p>
+                                <input type="text" class="form-control form-control-lg" name="date" placeholder="date">
+                                 {% csrf_token %}
+                                    <button class="btn btn-onboarding btn-block">Submit</button>
+                                </form>
+                            </div>
+                     {% if messages %}
+                                <table id="message" class="table table-hover" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>Username</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for m in messages %}
+                                            <form method="POST">
+                                                <tr>
+                                                    <td name="message">{{ m }}</td>
+                                                    <input type="hidden" name="message" value="{{ m }}">
+                                                    <td>
+                                                        <a class="btn btn-primary btn-friend-search"
+                                                           href="{% url 'getDis' foundSession.id %}?message={{ m.user.message }}"
+                                                           role="button">Add</a>
+                                                    </td>
+                                                </tr>
+                                            </form>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            {% endif %}
+                </div>
+            </div>
+
+        </div>
+    </body>
+
+        <section class="mt-auto">
+            <!-- Footer -->
+            <footer class="text-center text-white" style="background-color: rgb(97, 129, 247);">
+              <!-- Grid container -->
+              <div class="text-center p-3" style="background-color: rgb(97, 129, 247);">
+                Classmate © 2022 Copyright:
+                <a class="text-white" href="https://github.com/uva-cs3240-f22/project-b-1">Group B-1</a>
+              </div>
+            </footer>
+            <!-- Footer -->
+          </section>
+            
+    </html>

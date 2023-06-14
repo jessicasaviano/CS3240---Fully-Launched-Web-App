@@ -1,0 +1,117 @@
+{% load socialaccount %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+{% load static %}
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>Classmate</title>
+        <link rel="stylesheet" href="{% static 'dashboard_style.css' %}">
+        <script src="{% static 'onboarding.js' %}"></script>
+        <link rel="stylesheet"
+              href="https://fonts.googleapis.com/css?family=Montserrat:700">
+        <link rel="stylesheet" 
+        href="https://fonts.googleapis.com/css?family=Inter:400,500,600">        
+        <link rel="icon"
+              type="image/svg+xml"
+              href="{% static 'images/favicon.svg' %}"/>
+        <meta name="theme-color" content="#FDFDFD">
+    </head>
+    <body class="d-flex flex-column min-vh-100">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <h1 class="title mt-4">Classmate</h1>
+            </div>
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'dashboard' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'viewStudySessions' %}">Groups</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="{% url 'viewClasses' %}">Classes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"
+                       aria-current="page"
+                       href="{% url 'getFriends' %}">Friends</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'getProfile' %}">Profile</a>
+                </li>
+                {% if request.user.is_superuser %}
+                <li class="nav-item">
+                    <a class="nav-link me-auto" href="{% url "admin:index" %}">Admin</a>
+                </li>
+                {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link me-auto" href="{% url 'account_logout' %}">Logout</a>
+                </li>
+            </ul>
+            <div class="container-fluid">
+                <h3 class="title-text mt-3">Create study session</h3>
+                <div class="row">
+            <div class="col d-flex flex-column">
+            <form action ="" method="POST">
+                {%csrf_token%}
+                {% bootstrap_form form %}
+                {% bootstrap_form_errors form %}
+
+                {% comment %} 
+                {{form.non_field_errors}}
+                <label for="id_description">Title</label>
+                <div class="FieldWrapper">
+                    {{form.title.errors}}
+                    {{form.title}}
+                </div>
+                <label for="id_location">Location</label>
+                <div class="FieldWrapper">
+                    {{form.location.errors}}
+                    {{form.location}}
+                </div>
+                <label for="id_description">Description</label>
+                <div class="FieldWrapper">
+                    {{form.description.errors}}
+                    {{form.description}}
+                </div>
+                <label for="id_startTime">Start Time</label>
+                <div class="FieldWrapper">
+                    {{form.startTime.errors}}
+                    {{form.startTime}}
+                </div>
+                <label for="id_endTime">End Time</label>
+                <div class="FieldWrapper">
+                    {{form.endTime.errors}}
+                    {{form.endTime}}
+                </div> {% endcomment %}
+                <input type="submit" value="Create study session" class="btn btn-primary btn-study-session"/>
+            </form>
+            </div>
+            <div class="col px-0 d-flex flex-column align-items-center justify-content-center">
+                <img class="" src="{% static 'images/session_creation.svg' %}">
+            </div>
+            </div>
+        </div>
+    </div>
+    </body>
+
+        <section class="mt-auto">
+            <!-- Footer -->
+            <footer class="text-center text-white" style="background-color: rgb(97, 129, 247);">
+              <!-- Grid container -->
+              <div class="text-center p-3" style="background-color: rgb(97, 129, 247);">
+                Classmate © 2022 Copyright:
+                <a class="text-white" href="https://github.com/uva-cs3240-f22/project-b-1">Group B-1</a>
+              </div>
+            </footer>
+            <!-- Footer -->
+          </section>
+            
+        
+        
+    </html>
+</html>

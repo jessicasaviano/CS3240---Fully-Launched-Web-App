@@ -1,0 +1,110 @@
+/* Landing Page Styling for home.html*/
+/* ToDo: Fix font sizing. Currently goes wack on mobile and random screen resolutions. 
+*/
+
+  /* Navbar Styling */
+.navbar-landing {
+  backdrop-filter: blur(20px);
+}
+
+.nav-item {
+  font-family: 'Montserrat', sans-serif;
+  color: #052943;
+  font-weight: bold;
+  font-size: 2.85em;
+  margin-left: 45.805px !important;
+}
+
+.nav-mar {
+  margin-top: 5.5vh !important;
+}
+
+/* Button Styling */
+
+.btn-outline-landing {
+  font-family: 'Helvetica-Neue', sans-serif;
+  color: #052943;
+  border-color: #052943;
+  font-size: 1.2em;
+}
+
+.btn-outline-landing:hover,
+.btn-outline-landing:focus,
+.btn-outline-landing:active,
+.btn-outline-landing.active {
+  font-family: 'Helvetica-Neue', sans-serif;
+  color: white;
+  background-color: #052943;
+}
+
+.btn-landing {
+  color: white;
+  background-color: #052943;
+  margin-bottom: 100px;
+}
+
+.btn-landing:hover,
+.btn-landing:focus,
+.btn-landing:active,
+.btn-landing.active {
+  color: white;
+  background-color: #041f33;
+}
+
+/* Main Landing Page Styling */
+
+.hero-text {
+  font-family: 'Montserrat', sans-serif;
+  color: #052943;
+  font-weight: bold;
+  font-size: 5vw;
+}
+
+.hero-subtext {
+  font-family: 'Montserrat', sans-serif;
+  color: #052943;
+  font-weight: bold;
+  font-size: 2.5vw;
+  margin-bottom: 5vh !important;
+}
+
+.landing-hero {
+  background: url("images/mesh-gradient.png") no-repeat center center fixed;
+  background-size: cover;
+}
+
+.img-fluid {
+  margin-bottom: 100px !important;
+}
+
+.container-hero {
+  margin-top: 5rem !important;
+
+}
+
+.feature-card {
+  border-radius: 24px;
+  background: rgba(199, 190, 255, 0.22);
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+  color: rgb(83, 74, 141);;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 70px 1px !important;
+  gap: 10px;
+  transition: transform .2s; /* Animation */
+
+}
+
+.feature-img {
+  width: 235px;
+  height: 165px;
+}
+/*.feature-card:hover {
+  transform: scale(1.1)
+}*/
